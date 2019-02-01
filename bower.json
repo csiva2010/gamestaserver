@@ -1,0 +1,21 @@
+{
+  "name": "gamestaserver",
+  "description": "gamesta server",
+  "main": "index.js",
+  "author": "chandrasekaran sivakolundu",
+  "moduleType": [
+    "amd"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "^2.1.16"
+  }
+}

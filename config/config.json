@@ -1,0 +1,64 @@
+{    
+    "requestURI": "/gamesta",
+    
+    "express": {
+        "mountpath": "config:requestURI"                
+      },
+    
+    "i18n": {
+        "contentPath": "path:./locales",
+        "fallback": "en-US"
+    },
+    
+    "ssl":{
+        "cert":"file:./ssl/server.crt",
+        "key":"file:./ssl/server.key"
+    },
+    "specialization": {
+    },
+
+    "middleware": {
+            "appsec": {
+                "module": {
+                    "arguments": [
+                        {
+                            "xframe": "SAMEORIGIN",
+                            "p3p": false,
+                            "csp": false
+                        }
+                    ]
+                }
+            },
+          "csrf": {
+            "enabled": false,
+            "priority": 111,
+            "route": "/((?!api))*",
+            "module": {
+                "name": "lusca",
+                "method": "csrf",
+                "arguments": [ {} ]
+            }
+        },
+        "cors": {
+            "enabled": true,
+            "priority": 119,
+            "module": {
+                "name": "path:./middlewares/cors"
+            }
+        },
+        
+
+        "static": {
+            "module": {
+                "arguments": [ "path:./.build" ]
+            }
+        },
+
+        "router": {
+            "module": {
+                "arguments": [{ "directory": "path:./controllers" }]
+            }
+        }
+
+    }
+}
